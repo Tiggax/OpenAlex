@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/ontology#> .
+
+@prefix oa: <https://db.famnit.upr.si/scheme#> .
+@prefix aa: <https://openalex.org/> .
+
+
+{{id}}
+    oa:orcid {{orcid}};
+    oa:display_name {{display_name}};
+    oa:display_name_alternatives {{oa_display_name_alternatives}}; # map
+    oa:works_count {{works_count}};
+    oa:cited_by_count {{cited_by_count}};
+    oa:most_cited_work {{most_cited_work}};
+    oa:summary_stats [
+        a oa:Summary;
+        oa:2yr_mean_citedness {{summary_stats.2yr_mean_citedness}};
+        oa:h_index {{summary_stats.h_index}};
+        oa:i10_index {{summary_stats.i10_index}};
+        oa:oa_percent {{summary_stats.oa_percent}};
+        oa:works_count {{summary_stats.works_count}};
+        oa:cited_by_count {{summary_stats.cited_by_count}};
+        oa:2yr_works_count {{summary_stats.2yr_works_count}};
+        oa:2yr_cited_by_count {{summary_stats.2yr_cited_by_count}};
+        oa:2yr_i10_index {{summary_stats.2yr_i10_index}};
+        oa:2yr_h_index {{summary_stats.2yr_h_index}};
+    ];
+    oa:last_known_institution {{last_known_institution}};
+    
+.

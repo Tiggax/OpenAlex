@@ -1,0 +1,154 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/ontology#> .
+
+@prefix oa: <https://db.famnit.upr.si/scheme#> .
+@prefix aa: <https://openalex.org/> .
+
+# PROPERTIES -----------------------------------------------
+
+oa:display_name a rdf:Property;
+    rdfs:label "Display Name";
+    rdfs:comment "Display name";
+    rdfs:range xsd:string
+.
+
+oa:works_count a rdf:Property;
+    rdfs:label "Works count";
+    rdfs:comment "The count of the works";
+    rdfs:range xsd:integer;
+.
+
+oa:cited_by_count a rdf:Property;
+    rdfs:label "Cited By Count";
+    rdfs:comment "Count of citations of the author";
+    rdfs:range xsd:integer;
+.
+# CLASSES -------------------------------------------------
+## AUTHOR -------------------------------------------------
+
+oa:Author a rdfs:Class ;
+    rdfs:label "Author" ;
+    rdfs:comment "The Author class";
+    rdfs:isDefinedBy oa:
+.
+
+oa:display_name_alternatives a rdf:Property;
+    rdfs:label "Display name alternative";
+    rdfs:comment "alternative ways of Display the name of the author";
+    rdfs:range xsd:string;
+    rdfs:domain oa:Author;
+.
+
+oa:most_cited_work a rdf:Property;
+    rdfs:label "Most cited work";
+    rdfs:comment "Reference to the most cited work";
+    rdfs:range oa:Work;
+    rdfs:domain oa:Author;
+.
+
+oa:summary_stats a rdf:Property;
+    rdfs:label "summary stats";
+    rdfs:comment "Summary statistics about the author";
+    rdfs:range oa:Summary;
+    rdfs:domain oa:Author;
+.
+
+oa:last_known_institution a rdf:Property;
+    rdfs:label "Last known institution";
+    rdfs:comment "Authors last known institution";
+    rdfs:range oa:Institution;
+    rdfs:domain oa:Author;
+.
+
+### SUMMARY ------------------------------------------------
+
+oa:Summary a rdfs:Class;
+    rdfs:label "Summary Statistics";
+    rdfs:comment "A class representing statistics data for the author";
+    rdfs:domain: oa:Author;
+.
+
+oa:2yr_mean_citedness a rdf:Property;
+    rdfs:label "2 year mean citedness";
+    rdfs:comment "mean citedness of the author over 2years";
+    rdfs:range xsd:integer;
+    rdfs:domain oa:Summary;
+.
+
+oa:h_index a rdf:Property;
+    rdfs:label "H index";
+    rdfs:comment "H index summary stats";
+    rdfs:range xsd:decimal;
+    rdfs:domain oa:Summary;
+.
+
+oa:i10_index a rdf:Property;
+    rdfs:label "I10 index";
+    rdfs:comment "I10 index summary stats";
+    rdfs:range xsd:decimal;
+    rdfs:domain oa:Summary;
+.
+
+oa:oa_percent a rdf:Property;
+    rdfs:label "OA percent";
+    rdfs:comment "oa percentage";
+    rdfs:range xsd:decimal;
+    rdfs:domain oa:Summary;
+.
+
+oa:2yr_works_count a rdf:Property;
+    rdfs:label "Works count 2yr";
+    rdfs:comment "Authors summary works count over 2 years";
+    rdfs:range xsd:integer;
+    rdfs:domain oa:Summary;
+.
+
+oa:2yr_cited_by_count a rdf:Property;
+    rdfs:label "Cited by count 2yr";
+    rdfs:comment "Authors summary cited by count over 2 years";
+    rdfs:range xsd:integer;
+    rdfs:domain oa:Summary;
+.
+
+oa:2yr_i10_index a rdf:Property;
+    rdfs:label "2yr i10 index";
+    rdfs:comment "Authors i10 index over 2 years";
+    rdfs:range xsd:integer;
+    rdfs:domain oa:Summary;
+.
+
+oa:2yr_h_index a rdf:Property;
+    rdfs:label "2yr H index";
+    rdfs:comment "Authors summary h index over 2 years";
+    rdfs:range xsd:decimal;
+    rdfs:domain oa:Summary;
+.
+
+
+### COUNTS BY YEAR ----------------------------------------
+
+oa:CountsByYear a rdfs:Class;
+    rdfs:label "Work";
+    rdfs:comment "Work object";
+    rdfs:idDefinedBy oa:
+.
+
+## WORK ---------------------------------------------------
+
+oa:Work a rdfs:Class ;
+    rdfs:label "Work";
+    rdfs:comment "Work object";
+    rdfs:idDefinedBy oa:
+.
+
+
+## INSTITUTION --------------------------------------------
+
+oa:Institution a rdfs:Class ;
+    rdfs:label "Institution";
+    rdfs:comment "Institution object";
+    rdfs:idDefinedBy oa:
+.
+
