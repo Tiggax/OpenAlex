@@ -25,6 +25,29 @@ oa:cited_by_count a rdf:Property;
     rdfs:comment "Count of citations of the author";
     rdfs:range xsd:integer;
 .
+
+oa:year a rdf:Property;
+    rdfs:label "year";
+    rdfs:comment "year";
+    rdfs:range xsd:integer;
+.
+
+oa:updated_date a rdf:Property;
+    rdfs:label "updated date";
+    rdfs:comment "Date on which the resource was updated";
+    rdfs:range xsd:dateTime;
+.
+oa:created_date a rdf:Property;
+    rdfs:label "created date";
+    rdfs:comment "Date on which the resource was created";
+    rdfs:range xsd:dateTime;
+.
+oa:updated a rdf:Property;
+    rdfs:label "updated";
+    rdfs:comment "Date on which the resource was updated";
+    rdfs:range xsd:dateTime;
+.
+
 # CLASSES -------------------------------------------------
 ## AUTHOR -------------------------------------------------
 
@@ -55,10 +78,24 @@ oa:summary_stats a rdf:Property;
     rdfs:domain oa:Author;
 .
 
-oa:last_known_institution a rdf:Property;
-    rdfs:label "Last known institution";
-    rdfs:comment "Authors last known institution";
+oa:last_known_institutions a rdf:Property;
+    rdfs:label "Last known institutions";
+    rdfs:comment "Authors last known institutions (list)";
     rdfs:range oa:Institution;
+    rdfs:domain oa:Author;
+.
+
+oa:counts_by_year a rdf:Property;
+    rdfs:label "Counts By Year";
+    rdfs:comment "Counts information by years";
+    rdfs:range oa:CountsByYear;
+    rdfs:domain oa:Author;
+.
+
+oa:works_api_url a rdf:Property;
+    rdfs:label "Works API URL";
+    rdfs:comment "API url of the authors works";
+    rdfs:range xsd:anyURI;
     rdfs:domain oa:Author;
 .
 

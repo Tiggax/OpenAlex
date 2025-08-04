@@ -1,11 +1,9 @@
+@prefix aa: <https://openalex.org/> .
+@prefix ex: <http://example.org/ontology#> .
+@prefix oa: <https://db.famnit.upr.si/scheme#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ex: <http://example.org/ontology#> .
-
-@prefix oa: <https://db.famnit.upr.si/scheme#> .
-@prefix aa: <https://openalex.org/> .
-
 
 {{id}}
     oa:orcid {{orcid}};
@@ -27,6 +25,16 @@
         oa:2yr_i10_index {{summary_stats.2yr_i10_index}};
         oa:2yr_h_index {{summary_stats.2yr_h_index}};
     ];
-    oa:last_known_institution {{last_known_institution}};
+    oa:last_known_institutions {{last_known_institution}};
+    oa:counts_by_year [
+        a oa:CountsByYear;
+        oa:year {{year}};
+        oa:works_count {{count}};
+        oa:cited_by_count {{count}};
+    ];
+    oa:works_api_url {{api_url}};
+    oa:updated_date {{api_url}};
+    oa:created_date {{api_url}};
+    oa:updated {{api_url}};
     
 .
