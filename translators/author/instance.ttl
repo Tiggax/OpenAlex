@@ -11,19 +11,23 @@
     oa:display_name_alternatives {{oa_display_name_alternatives}}; # map
     oa:works_count {{works_count}};
     oa:cited_by_count {{cited_by_count}};
-    oa:most_cited_work {{most_cited_work}};
     oa:summary_stats [
         a oa:Summary;
         oa:2yr_mean_citedness {{summary_stats.2yr_mean_citedness}};
         oa:h_index {{summary_stats.h_index}};
         oa:i10_index {{summary_stats.i10_index}};
-        oa:oa_percent {{summary_stats.oa_percent}};
         oa:works_count {{summary_stats.works_count}};
         oa:cited_by_count {{summary_stats.cited_by_count}};
         oa:2yr_works_count {{summary_stats.2yr_works_count}};
         oa:2yr_cited_by_count {{summary_stats.2yr_cited_by_count}};
         oa:2yr_i10_index {{summary_stats.2yr_i10_index}};
         oa:2yr_h_index {{summary_stats.2yr_h_index}};
+    ];
+    oa:affiliation [
+        a oa:AffiliationInstance;
+        oa:memberOf {{affiliation.id}};
+        oa:yearOfAffiliation {{affilation.year}}^^xsd:gYear;
+
     ];
     oa:last_known_institutions {{last_known_institution}};
     oa:counts_by_year [
@@ -33,6 +37,7 @@
         oa:oa_works_count {{count}};
         oa:cited_by_count {{count}};
     ];
+    # x_concepts is getting deprecated wait for topics
     oa:works_api_url {{api_url}};
     oa:updated_date {{api_url}};
     oa:created_date {{api_url}};
