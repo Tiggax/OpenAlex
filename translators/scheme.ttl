@@ -3,7 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/ontology#> .
 
-@prefix oa: <https://db.famnit.upr.si/scheme#> .
+@prefix oa: <https://db.famnit.upr.si/scheme/> .
 @prefix aa: <https://openalex.org/> .
 
 # PROPERTIES -----------------------------------------------
@@ -17,6 +17,12 @@ oa:display_name a rdf:Property;
 oa:works_count a rdf:Property;
     rdfs:label "Works count";
     rdfs:comment "The count of the works";
+    rdfs:range xsd:integer;
+.
+
+oa:oa_works_count a rdf:Property;
+    rdfs:label "OA Works count";
+    rdfs:comment "The count of the OpenAlex works";
     rdfs:range xsd:integer;
 .
 
@@ -35,17 +41,17 @@ oa:year a rdf:Property;
 oa:updated_date a rdf:Property;
     rdfs:label "updated date";
     rdfs:comment "Date on which the resource was updated";
-    rdfs:range xsd:dateTime;
+    rdfs:range xsd:date;
 .
 oa:created_date a rdf:Property;
     rdfs:label "created date";
     rdfs:comment "Date on which the resource was created";
-    rdfs:range xsd:dateTime;
+    rdfs:range xsd:date;
 .
 oa:updated a rdf:Property;
     rdfs:label "updated";
     rdfs:comment "Date on which the resource was updated";
-    rdfs:range xsd:dateTime;
+    rdfs:range xsd:date;
 .
 
 # CLASSES -------------------------------------------------

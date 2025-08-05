@@ -1,6 +1,6 @@
 @prefix aa: <https://openalex.org/> .
 @prefix ex: <http://example.org/ontology#> .
-@prefix oa: <https://db.famnit.upr.si/scheme#> .
+@prefix oa: <https://db.famnit.upr.si/scheme/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -30,11 +30,12 @@
         a oa:CountsByYear;
         oa:year {{year}};
         oa:works_count {{count}};
+        oa:oa_works_count {{count}};
         oa:cited_by_count {{count}};
     ];
     oa:works_api_url {{api_url}};
     oa:updated_date {{api_url}};
     oa:created_date {{api_url}};
     oa:updated {{api_url}};
-    
+
 .
