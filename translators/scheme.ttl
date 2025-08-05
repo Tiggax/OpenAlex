@@ -41,7 +41,7 @@ oa:year a rdf:Property;
 oa:updated_date a rdf:Property;
     rdfs:label "updated date";
     rdfs:comment "Date on which the resource was updated";
-    rdfs:range xsd:date;
+    rdfs:range xsd:dateTime;
 .
 oa:created_date a rdf:Property;
     rdfs:label "created date";
@@ -51,7 +51,7 @@ oa:created_date a rdf:Property;
 oa:updated a rdf:Property;
     rdfs:label "updated";
     rdfs:comment "Date on which the resource was updated";
-    rdfs:range xsd:date;
+    rdfs:range xsd:dateTime;
 .
 
 # CLASSES -------------------------------------------------
@@ -70,19 +70,38 @@ oa:display_name_alternatives a rdf:Property;
     rdfs:domain oa:Author;
 .
 
-oa:most_cited_work a rdf:Property;
-    rdfs:label "Most cited work";
-    rdfs:comment "Reference to the most cited work";
-    rdfs:range oa:Work;
-    rdfs:domain oa:Author;
-.
-
 oa:summary_stats a rdf:Property;
     rdfs:label "summary stats";
     rdfs:comment "Summary statistics about the author";
     rdfs:range oa:Summary;
     rdfs:domain oa:Author;
 .
+
+oa:affiliations a rdf:Property;
+    rdfs:label "Affiliations";
+    rdfs:comment "Authors affiliations";
+    rdfs:range oa:AffiliationInstance;
+    rdfs:domain oa:Author;
+.
+
+### affiliation -------------------
+oa:AffiliationInstance a rdfs:Class;
+    rdfs:label "Affiliation instance";
+    rdfs:comment "instance of authors affiliation";
+.
+oa:memberOf a rdf:Property;
+    rdfs:label "Affiliations";
+    rdfs:comment "Authors affiliations";
+    rdfs:range oa:Institution;
+    rdfs:domain oa:AffiliationInstance;
+.
+oa:yearOfAffiliation a rdf:Property;
+    rdfs:label "Affiliations";
+    rdfs:comment "Authors affiliations";
+    rdfs:range xsd:gYear;
+    rdfs:domain oa:AffiliationInstance;
+.   
+### -------------------------------
 
 oa:last_known_institutions a rdf:Property;
     rdfs:label "Last known institutions";
@@ -97,6 +116,14 @@ oa:counts_by_year a rdf:Property;
     rdfs:range oa:CountsByYear;
     rdfs:domain oa:Author;
 .
+### COUNTS BY YEAR ----------------------------------------
+
+oa:CountsByYear a rdfs:Class;
+    rdfs:label "Work";
+    rdfs:comment "Work object";
+    rdfs:idDefinedBy oa:
+.
+### -------------------------------------------------------
 
 oa:works_api_url a rdf:Property;
     rdfs:label "Works API URL";
@@ -133,13 +160,6 @@ oa:i10_index a rdf:Property;
     rdfs:domain oa:Summary;
 .
 
-oa:oa_percent a rdf:Property;
-    rdfs:label "OA percent";
-    rdfs:comment "oa percentage";
-    rdfs:range xsd:decimal;
-    rdfs:domain oa:Summary;
-.
-
 oa:2yr_works_count a rdf:Property;
     rdfs:label "Works count 2yr";
     rdfs:comment "summary works count over 2 years";
@@ -169,13 +189,7 @@ oa:2yr_h_index a rdf:Property;
 .
 
 
-### COUNTS BY YEAR ----------------------------------------
 
-oa:CountsByYear a rdfs:Class;
-    rdfs:label "Work";
-    rdfs:comment "Work object";
-    rdfs:idDefinedBy oa:
-.
 
 ## WORK ---------------------------------------------------
 
