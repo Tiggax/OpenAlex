@@ -5,10 +5,17 @@ export module author
 export def load [
     folder: path  # the folder containing the parsed data
     --database(-d): path = ./database # the location of the database
+    --schema(-s): path = ./translators/scheme.ttl # use custom schema
 ] {
 
     let files = glob ($folder | path join "**/*.ttl")
     let total = ($files | length)
+
+    if ($database | path exists) {
+        mv -f $database $"($database).old"
+    }
+
+    oxigraph load --location $database --format trig -f $schema
 
     print $"found (ansi blue)($total)(ansi reset) files. Starting..."
 
@@ -30,11 +37,14 @@ export def load [
             print -ne ("" | fill -a l -w $height -c (ansi cursor_up)) "\r" (render-bar $file.index  $total --width 30)
         }
         | ignore
+        print -ne ("" | fill -a l -w $height -c (ansi cursor_up)) "\r" (render-bar $total  $total --width 30)
     } catch {
         ignore
     }
     print -en (ansi cursor_on)
-
+    print ""
+    print $"(ansi green)Finished(ansi reset) loading (ansi blue)($total)(ansi reset) files"
+    print $"restarting the service (ansi yellow)`open-alex`(ansi reset)"
     
 
 }
@@ -61,7 +71,7 @@ handler: closure # the parse handler on the data
         | get stem
     }
     | select name file
-    | par-each -t 20 {|instance|
+    | par-each {|instance|
 
         print $"Parsing in: `($instance.file)`..."
         
@@ -85,14 +95,22 @@ handler: closure # the parse handler on the data
                     | str join ""
                 )
             )
+            if not ($save_file | path exists) {
+                    
+                gunzip -c $file.name
+                | lines
+                | each {
+                    from json
+                    | do $handler
+                    | save -a $save_file
+                
+                }
+                
+            } else {
+                print $"(ansi yellow)Skipping(ansi reset) (ansi blue)`($save_file)`(ansi reset)"
+            }
 
-            gunzip -c $file.name
-            | lines
-            | each {from json}
-            | do $handler
-            | save -f $save_file
-
-            print $"saved in: `($save_file)`"
+            print $"(ansi green)saved in:(ansi reset) (ansi blue)`($save_file)`(ansi reset)"
         }
 
     }
